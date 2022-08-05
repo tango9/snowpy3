@@ -29,4 +29,5 @@ Current version of SNOWPY3 works with NOW (New York version)
 
 
 
-
+## NOTES
+   Works with the latest version of SNOW (Aug 5, 2022 checks)
