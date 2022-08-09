@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "snowpy3"
-version = "2022.08.10"
+version = "2022.08.10.001"
 description = "Python 3 Library to interact with and manage a ServiceNow instance via JSONv2"
 classifiers=[
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
@@ -10,6 +10,8 @@ classifiers=[
 authors = ["RCB <rcb@tangonine.com>"]
 readme = 'README.md'
 repository = "https://github.com/tango9/snowpy3"
+homepage = "https://www.tangonine.com"
+documentation = "https://github.com/tango9/snowpy3/wiki"
 
 [tool.poetry.dependencies]
 python = "^3.8"
