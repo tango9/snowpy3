@@ -1,14 +1,18 @@
 import hashlib
 import json
 import redis
+from typing import Dict, Any, Callable, TypeVar, Union
 
 from functools import wraps
 
-rd = redis.Redis()
-def cached(ttl=300):
-    def proxy(f):
+T = TypeVar('T')
+
+rd: redis.Redis = redis.Redis()
+
+def cached(ttl: int = 300) -> Callable[[T], T]:
+    def proxy(f: Callable[..., T]) -> Callable[..., T]:
         @wraps(f)
-        def caching(*args, **kwargs):
+        def caching(*args: Any, **kwargs: Any) -> T:
             if ttl == 0:
                 return f(*args, **kwargs)
 
@@ -28,20 +32,20 @@ def cached(ttl=300):
     return proxy
 
 
-def format_query_type(value):
+def format_query_type(value: Union[list, tuple, str, int]) -> tuple[str, Union[str, int]]:
     if type(value) in (type([]), type(())):
         return ('IN', ','.join(value))
     else:
         return ('=', value)
 
 
-def format_query(meta={}, metaon={}):
+def format_query(meta: Dict[str, Any] = None, metaon: Dict[str, Any] = None) -> str:
     try:
-        items = meta.items()
+        items = (meta or {}).items()
         if metaon:
             metaon_items = metaon.items()
     except AttributeError:
-        items = meta.items()
+        items = (meta or {}).items()
         if metaon:
             metaon_items = metaon.items()
 

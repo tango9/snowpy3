@@ -1,32 +1,33 @@
+from typing import Dict, Any, Optional, List, Union
 from snowpy3 import Utils
 
 ttl_cache=0
 
 
 class Base(object):
-    __table__ = None
+    __table__: Optional[str] = None
 
-    def __init__(self, Connection):
+    def __init__(self, Connection: Any) -> None:
         self.Connection = Connection
 
     @Utils.cached(ttl=ttl_cache)
-    def list_by_query(self, query, **kwargs):
+    def list_by_query(self, query: str, **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._list_by_query(self.__table__, query, **kwargs))
 
     @Utils.cached(ttl=ttl_cache)
-    def list(self, meta, **kwargs):
+    def list(self, meta: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._list(self.__table__, meta, **kwargs))
 
     @Utils.cached(ttl=ttl_cache)
-    def fetch_all(self, meta, **kwargs):
+    def fetch_all(self, meta: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._get(self.__table__, meta, **kwargs))
 
     @Utils.cached(ttl=ttl_cache)
-    def fetch_all_by_query(self, query, **kwargs):
+    def fetch_all_by_query(self, query: str, **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._get_by_query(self.__table__, query, **kwargs))
 
     @Utils.cached(ttl=ttl_cache)
-    def fetch_one(self, meta, **kwargs):
+    def fetch_one(self, meta: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         response = self.fetch_all(meta, **kwargs)
         if 'records' in response:
             if len(response['records']) > 0:
@@ -36,35 +37,35 @@ class Base(object):
                 return response[0]
         return {}
 
-    def create(self, data, **kwargs):
+    def create(self, data: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._post(
             self.__table__, data, **kwargs))
 
-    def create_multiple(self, data, **kwargs):
+    def create_multiple(self, data: List[Dict[str, Any]], **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._post_multiple(
             self.__table__, data, **kwargs))
 
-    def update(self, where, data, **kwargs):
+    def update(self, where: Dict[str, Any], data: Dict[str, Any], **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._update(
             self.__table__, where, data, **kwargs))
 
-    def delete(self, id, **kwargs):
+    def delete(self, id: str, **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._delete(
             self.__table__, id, **kwargs))
 
-    def delete_multiple(self, query, **kwargs):
+    def delete_multiple(self, query: str, **kwargs) -> Dict[str, Any]:
         return self.format(self.Connection._delete_multiple(
             self.__table__, query, **kwargs))
 
-    def format(self, response):
+    def format(self, response: Any) -> Dict[str, Any]:
         return self.Connection._format(response)
 
-    def last_updated(self, minutes, meta={}, **kwargs):
+    def last_updated(self, minutes: int, meta: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
         metaon = {'sys_updated_on':
                       'Last {0} minutes@javascript:gs.minutesAgoStart({1})@'
                       'javascript:gs.minutesAgoEnd(0)'.format(minutes, minutes)}
         return self.format(self.Connection._get(
-            self.__table__, meta, metaon=metaon, **kwargs))
+            self.__table__, meta or {}, metaon=metaon, **kwargs))
 
 
 #
