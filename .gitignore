@@ -132,3 +132,4 @@ dmypy.json
 tests/
 test_*.py
 pytest.ini
+*.txt
