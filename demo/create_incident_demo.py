@@ -32,7 +32,7 @@ from snowpy3 import SNOWPY3
 
 
 def main():
-    """Main demo function to create an incident."""
+    """Main demo  function to create an incident."""
     
     print("🎯 snowpy3 Demo: Create Incident")
     print("=" * 50)
