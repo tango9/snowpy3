@@ -39,7 +39,6 @@ class Base(object):
     def create(self, data, **kwargs):
         return self.format(self.Connection._post(
             self.__table__, data, **kwargs))
-        """ Test one create"""
 
     def create_multiple(self, data, **kwargs):
         return self.format(self.Connection._post_multiple(
