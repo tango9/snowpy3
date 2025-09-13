@@ -1,6 +1,6 @@
 [project]
 name = "snowpy3"
-version = "2025.09.12.001"
+version = "2025.09.12.002"
 description = "Python 3 Library to interact with and manage a ServiceNow instance via JSONv2"
 readme = "README.md"
 requires-python = ">=3.12"
