@@ -8,10 +8,36 @@ dependencies = [
     "redis>=6.4.0",
     "requests>=2.32.5",
 ]
-authors = ["TANGONINE <snowpy3@tangonine.com>"]
+authors = [
+    {name = "TANGONINE", email = "snowpy3@tangonine.com"}
+]
+maintainers = [
+    {name = "TANGONINE", email = "snowpy3@tangonine.com"}
+]
+license = {text = "GPL-3.0-or-later"}
+keywords = ["servicenow", "snow", "api", "jsonv2", "incident", "change", "problem"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
 repository = "https://github.com/tango9/snowpy3"
 homepage = "https://www.tangonine.com"
 documentation = "https://github.com/tango9/snowpy3/wiki"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["snowpy3"]
 
 [dependency-groups]
 dev = [
@@ -19,4 +45,6 @@ dev = [
     "pytest>=8.4.2",
     "pytest-cov>=7.0.0",
     "pytest-mock>=3.15.0",
+    "build>=1.0.0",
+    "twine>=5.0.0",
 ]

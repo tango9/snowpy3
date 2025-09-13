@@ -133,3 +133,16 @@ tests/
 test_*.py
 pytest.ini
 *.txt
+
+# PyPI publishing files (moved to tests directory)
+publish_to_pypi.py
+PYPI_PUBLISHING_GUIDE.md
+dist/
+build/
+*.egg-info/
+
+# PyPI credentials and tokens (never commit these!)
+PYPI_TOKEN
+PYPI_USERNAME
+PYPI_PASSWORD
+*.pypirc
