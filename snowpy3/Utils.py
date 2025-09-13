@@ -19,7 +19,7 @@ def cached(ttl: int = 300) -> Callable[[T], T]:
             _hash = "{0}-{1}".format(f.__name__, hashlib.md5("{0}{1}".format(
                 repr(args[1:]),
                 repr(kwargs)
-            )).hexdigest())
+            ).encode('utf-8')).hexdigest())
             try:
                 cache = rd.get(_hash)
                 if not cache:

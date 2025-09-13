@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Test files and directories
+tests/
+test_*.py
+pytest.ini
