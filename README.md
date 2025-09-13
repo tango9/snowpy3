@@ -20,7 +20,7 @@
 ```
 pip install snowpy3
 ```
-Current version of SNOWPY3 works with NOW (New York version)
+Current version of SNOWPY3 works with NOW (Yokohama version)
 
 ## Dependencies
 
@@ -30,4 +30,4 @@ Current version of SNOWPY3 works with NOW (New York version)
 
 
 ## NOTES
-   Works with the latest version of SNOW (Aug 5, 2022 checks)
+   Works with the latest version of SNOW (Sep 13, 2025 checks)
