@@ -39,6 +39,11 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["snowpy3"]
 
+[tool.uv.workspace]
+members = [
+    "Delta-Test",
+]
+
 [dependency-groups]
 dev = [
     "fakeredis>=2.31.1",
